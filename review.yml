@@ -1,0 +1,68 @@
+aid: paradedb
+name: ParadeDB
+review:
+  question: Does ParadeDB expose a documented public REST or WebSocket API?
+  answer: false
+  date: '2026-06-20'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. ParadeDB has no event-driven, SSE, or
+    WebSocket surface. Its entire interface is synchronous SQL executed over the
+    PostgreSQL wire protocol, which is outside AsyncAPI and OpenAPI/REST scope.
+findings:
+  summary: |
+    ParadeDB does not publish a REST, HTTP, or WebSocket API. It is an
+    open-source PostgreSQL extension stack - pg_search (BM25 full-text search,
+    built on Tantivy) and pg_analytics (columnar OLAP, built on Apache
+    DataFusion) - that runs inside Postgres. The integration surface is SQL
+    over the PostgreSQL wire protocol (default TCP 5432): clients connect with
+    standard Postgres drivers/ORMs and invoke ParadeDB through SQL functions,
+    operators, and index access methods. Full-text search uses BM25 indexes
+    created with CREATE INDEX ... USING bm25, queried with the @@@ operator, and
+    scored/highlighted with paradedb.score() and paradedb.snippet(). Analytics
+    uses standard SQL aggregates accelerated by columnar storage and parallel
+    workers. No REST endpoints exist; the OpenAPI document uses paths: {} and
+    only records the SQL/Postgres nature of the interface. No REST endpoints
+    were fabricated.
+  transports:
+    - protocol: PostgreSQL Wire Protocol
+      scheme: postgresql
+      baseURL: postgresql://host:5432/dbname
+      documented: true
+      note: Primary and only interface - SQL over the Postgres wire protocol via standard clients/drivers/ORMs.
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: No HTTP/REST API is documented anywhere on paradedb.com, docs.paradedb.com, or the GitHub repo.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented; ParadeDB has no realtime/bidirectional streaming surface.
+  sqlInterfaceConfirmed:
+    - CREATE EXTENSION pg_search;
+    - CREATE INDEX ... USING bm25 (...) WITH (key_field='...');
+    - SELECT ... WHERE <column> @@@ '<query>';
+    - SELECT paradedb.score(id) ...
+    - SELECT paradedb.snippet(<column>) ...
+    - Standard SQL aggregate queries (pg_analytics columnar/OLAP)
+sources:
+  - url: https://docs.paradedb.com/welcome/introduction
+    type: Documentation
+    note: States ParadeDB is accessed over the Postgres wire protocol with standard SQL and custom search operators.
+  - url: https://docs.paradedb.com/documentation/full-text/overview
+    type: Documentation
+    note: BM25 full-text search via the @@@ operator and paradedb.score / paradedb.snippet functions.
+  - url: https://github.com/paradedb/paradedb
+    type: GitHub
+    note: pg_search and pg_analytics extensions; AGPL-3.0 community, commercial Enterprise. No REST API.
+  - url: https://www.paradedb.com
+    type: Website
+    note: Positions ParadeDB as an Elasticsearch alternative consumed as standard SQL in Postgres.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No REST or WebSocket surface exists, so no OpenAPI paths and no AsyncAPI
+    document were authored. The OpenAPI file documents the SQL/Postgres-protocol
+    interface with an empty paths object and fabricates nothing.

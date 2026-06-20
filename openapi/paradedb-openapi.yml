@@ -1,0 +1,48 @@
+openapi: 3.0.1
+info:
+  title: ParadeDB SQL Interface (No REST API)
+  description: >-
+    ParadeDB does NOT expose a REST or HTTP API. It is an open-source PostgreSQL
+    extension stack (pg_search for BM25 full-text search, pg_analytics for
+    columnar OLAP) and is consumed exclusively as SQL over the PostgreSQL wire
+    protocol (default TCP port 5432).
+
+
+    There are no HTTP request/response endpoints to model, so the `paths` object
+    is intentionally empty. This document exists only to record that the
+    integration surface is SQL/Postgres, not REST.
+
+
+    How ParadeDB is actually used:
+
+    - Connect with any standard Postgres client, driver, or ORM (psql, libpq,
+      Drizzle, Django, SQLAlchemy, Rails, EF Core) over the PostgreSQL wire
+      protocol: postgresql://user:pass@host:5432/dbname
+    - Enable the extensions: `CREATE EXTENSION pg_search;`
+    - Create a BM25 index:
+      `CREATE INDEX search_idx ON mock_items USING bm25 (id, description)
+      WITH (key_field='id');`
+    - Run a full-text search with the `@@@` operator:
+      `SELECT * FROM mock_items WHERE description @@@ 'keyboard';`
+    - Score and highlight with `paradedb.score(id)` and
+      `paradedb.snippet(description)`.
+    - Run analytics with standard SQL aggregates accelerated by columnar
+      storage and Postgres parallel workers.
+
+
+    Because no REST endpoints exist, none are fabricated here.
+  termsOfService: https://www.paradedb.com/terms
+  contact:
+    name: ParadeDB
+    email: sales@paradedb.com
+    url: https://www.paradedb.com
+  license:
+    name: AGPL-3.0 (Community) / Commercial (Enterprise)
+    url: https://github.com/paradedb/paradedb/blob/dev/LICENSE
+  version: '0.19'
+servers:
+  - url: postgresql://localhost:5432
+    description: >-
+      Not an HTTP server. Shown for reference only - ParadeDB is reached over
+      the PostgreSQL wire protocol, not HTTP. There is no REST base URL.
+paths: {}

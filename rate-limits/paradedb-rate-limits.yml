@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: ParadeDB
+providerId: paradedb
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Search
+- Full-Text Search
+- Analytics
+- PostgreSQL
+- Database
+- Rate Limiting
+- Quotas
+description: >-
+  ParadeDB is a set of PostgreSQL extensions consumed over the Postgres wire
+  protocol, not a metered HTTP API, so it imposes no request-per-minute or
+  token-style rate limits. Throughput is bounded instead by Postgres connection
+  limits (max_connections), CPU/memory/IO of the host, parallel worker settings,
+  and any limits set by the underlying managed-Postgres or ParadeDB Cloud
+  provider. Specific values are deployment-dependent and not reconciled here.
+notes: >-
+  There is no documented API rate-limit table because the interface is SQL, not
+  REST. On reconciliation, capture connection caps and resource limits from the
+  specific self-managed or managed deployment in use.
+sources:
+- https://docs.paradedb.com/welcome/introduction
+- https://www.paradedb.com
+- https://github.com/paradedb/paradedb
+responseCodes: {}
+limits:
+- name: Postgres Connections
+  scope: instance
+  metric: connections
+  limit: see deployment configuration (max_connections)
+  notes: Bounded by Postgres max_connections and any pooler (PgBouncer) settings.
+- name: Parallel Workers
+  scope: instance
+  metric: workers
+  limit: see deployment configuration
+  notes: Analytics queries scale with max_parallel_workers / max_parallel_workers_per_gather.
+- name: Compute Resources
+  scope: instance
+  metric: cpu_memory_io
+  limit: host-dependent
+  notes: Query throughput is bounded by host CPU, memory, and IO, not an API quota.
+policies:
+- name: No API Rate Limiting
+  description: ParadeDB exposes SQL over the Postgres wire protocol; it does not enforce HTTP request or token rate limits.
+- name: Resource-Bound Throughput
+  description: Tune max_connections, work_mem, and parallel-worker settings, and size the host or managed plan to the workload.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

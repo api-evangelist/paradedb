@@ -1,0 +1,86 @@
+{
+  "info": {
+    "_postman_id": "b3f6c4e2-1a2d-4f8b-9c3e-0a1b2c3d4e5f",
+    "name": "ParadeDB SQL Interface (No REST API)",
+    "description": "ParadeDB has no REST/HTTP API. It is a PostgreSQL extension stack (pg_search, pg_analytics) consumed as SQL over the PostgreSQL wire protocol (TCP 5432). Postman cannot issue Postgres-protocol queries; the items below are documentation-only stubs recording representative SQL statements, not HTTP requests.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Full-Text Search (pg_search)",
+      "description": "BM25 full-text search via SQL over the Postgres wire protocol.",
+      "item": [
+        {
+          "name": "Enable pg_search extension",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "postgresql://localhost:5432/postgres",
+              "protocol": "postgresql",
+              "host": ["localhost"],
+              "port": "5432",
+              "path": ["postgres"]
+            },
+            "description": "Not an HTTP request. Run as SQL: CREATE EXTENSION pg_search;"
+          },
+          "response": []
+        },
+        {
+          "name": "Create BM25 index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "postgresql://localhost:5432/postgres",
+              "protocol": "postgresql",
+              "host": ["localhost"],
+              "port": "5432",
+              "path": ["postgres"]
+            },
+            "description": "Not an HTTP request. Run as SQL: CREATE INDEX search_idx ON mock_items USING bm25 (id, description) WITH (key_field='id');"
+          },
+          "response": []
+        },
+        {
+          "name": "Search with @@@ operator",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "postgresql://localhost:5432/postgres",
+              "protocol": "postgresql",
+              "host": ["localhost"],
+              "port": "5432",
+              "path": ["postgres"]
+            },
+            "description": "Not an HTTP request. Run as SQL: SELECT id, paradedb.score(id) FROM mock_items WHERE description @@@ 'keyboard' ORDER BY paradedb.score(id) DESC;"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics (pg_analytics)",
+      "description": "Columnar/OLAP analytics via standard SQL aggregates over the Postgres wire protocol.",
+      "item": [
+        {
+          "name": "SQL aggregate query",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "postgresql://localhost:5432/postgres",
+              "protocol": "postgresql",
+              "host": ["localhost"],
+              "port": "5432",
+              "path": ["postgres"]
+            },
+            "description": "Not an HTTP request. Run as SQL: SELECT category, COUNT(*), AVG(rating) FROM mock_items GROUP BY category;"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

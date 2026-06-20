@@ -1,0 +1,98 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: ParadeDB
+providerId: paradedb
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Search
+- Full-Text Search
+- Analytics
+- PostgreSQL
+- Database
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of ParadeDB spend. ParadeDB is consumed as SQL over the Postgres
+  wire protocol, not as a metered API, so cost is driven by infrastructure
+  (compute, memory, storage, IO) rather than per-request or per-token charges.
+  The Community extensions are free under AGPL-3.0; cost arises from self-hosted
+  infrastructure, commercial Enterprise licensing, the fully managed ParadeDB
+  Cloud (referenced around $0.193/hour), or BYOC agreements. Managed and
+  enterprise pricing is sales-led, so this artifact is not reconciled.
+notes: >-
+  Verify managed-cloud hourly rates and enterprise/BYOC license terms with
+  ParadeDB during reconciliation; self-hosted cost is the underlying Postgres
+  infrastructure bill.
+sources:
+- https://www.paradedb.com
+- https://www.paradedb.com/pricing
+- https://docs.paradedb.com/welcome/introduction
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: ParadeDB
+serviceCategory: Databases
+billingModel:
+  pricingCategory: Subscription / Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: ParadeDB
+  ServiceCategory: Databases
+  ProviderName: ParadeDB
+  PublisherName: ParadeDB
+  InvoiceIssuerName: ParadeDB
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription
+meters:
+- name: instance_hours
+  description: Managed ParadeDB Cloud instance runtime, billed per hour (referenced around $0.193/hr).
+  unit: hours
+  aggregation: sum
+  dimensions:
+  - account
+  - instance
+- name: storage_gb
+  description: Persistent storage for indexes and tables, billed per GB-month on managed deployments.
+  unit: gb-month
+  aggregation: sum
+  dimensions:
+  - account
+  - instance
+- name: enterprise_license
+  description: Commercial Enterprise license fee for self-managed or BYOC deployments.
+  unit: contract
+  aggregation: max
+  dimensions:
+  - account
+- name: self_hosted_infrastructure
+  description: Underlying compute, memory, and IO cost when self-hosting the AGPL community extensions.
+  unit: cost
+  aggregation: sum
+  dimensions:
+  - account
+  - host
+principles:
+- name: Visibility
+  description: Track Postgres host/instance hours and storage; the community extensions add no per-request meter.
+- name: Allocation
+  description: Tag databases and instances per workload/team and map to cost centers.
+- name: Optimization
+  description: Self-host the free AGPL extensions where licensing allows; right-size instances; tune indexes and parallel workers to cut compute.
+- name: Accountability
+  description: Assign owners per database/instance; review infrastructure and license spend monthly against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

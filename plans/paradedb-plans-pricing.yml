@@ -1,0 +1,125 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: ParadeDB
+providerId: paradedb
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Search
+- Full-Text Search
+- Analytics
+- PostgreSQL
+- Database
+- Plans
+description: >-
+  ParadeDB Community (the pg_search and pg_analytics extensions) is open source
+  under AGPL-3.0 and free to self-host. Enterprise features (read replicas, high
+  availability, partitioned indexes, security, hot-standby search) are licensed
+  commercially. ParadeDB also offers a fully managed cloud (referenced around
+  $0.193/hour) and a bring-your-own-cloud (BYOC) deployment. Enterprise and
+  cloud pricing is sales-led and not publicly itemized, so this artifact is not
+  reconciled.
+notes: >-
+  Pricing is not consistently published; the managed-cloud hourly figure and
+  enterprise terms should be verified with ParadeDB sales during reconciliation.
+sources:
+- https://www.paradedb.com
+- https://www.paradedb.com/pricing
+- https://docs.paradedb.com/welcome/introduction
+- https://github.com/paradedb/paradedb
+plans:
+- id: paradedb-community
+  name: Community (Self-Managed)
+  type: free
+  description: >-
+    Open-source pg_search and pg_analytics extensions under AGPL-3.0. Free to
+    self-host on any Postgres deployment; single-node, community support.
+  entries:
+  - label: Community Extensions
+    name: community
+    type: free
+    metric: deployment
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0 (AGPL-3.0, self-hosted)
+    userMultiplied: false
+  elements:
+  - name: pg_search (BM25 Full-Text Search)
+  - name: pg_analytics (Columnar OLAP)
+  - name: Community Support
+- id: paradedb-enterprise
+  name: Enterprise (Self-Managed)
+  type: enterprise
+  description: >-
+    Commercially licensed enterprise features on top of the community
+    extensions - read replicas, high availability, partitioned indexes,
+    security, hot-standby search - with dedicated support. Contact ParadeDB
+    sales.
+  entries:
+  - label: Enterprise License
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Read Replicas
+  - name: High Availability
+  - name: Partitioned Indexes
+  - name: Security Features
+  - name: Hot-Standby Search
+  - name: Dedicated Support
+- id: paradedb-cloud
+  name: Fully Managed Cloud
+  type: usage
+  description: >-
+    Fully managed ParadeDB service with one-click deployments and managed
+    infrastructure (currently in private beta). Referenced starting rate around
+    $0.193 per hour; verify current rates with ParadeDB.
+  entries:
+  - label: Managed Instance
+    name: managed_instance
+    type: usage
+    metric: hours
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from ~$0.193 per hour (verify)
+    userMultiplied: false
+  elements:
+  - name: Managed pg_search
+  - name: Managed pg_analytics
+  - name: Infrastructure Management
+- id: paradedb-byoc
+  name: Bring-Your-Own-Cloud (BYOC)
+  type: enterprise
+  description: >-
+    Enterprise BYOC deployment running ParadeDB inside the customer's own cloud
+    account, with planned partnerships with Postgres platform providers. Sales-led.
+  entries:
+  - label: BYOC Agreement
+    name: byoc
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Customer-Cloud Deployment
+  - name: Enterprise Features
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

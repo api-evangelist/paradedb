@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ParadeDB SQL Interface (No REST API)",
+    "version": "0.19",
+    "description": "ParadeDB has no REST/HTTP API. It is a PostgreSQL extension stack (pg_search, pg_analytics) consumed as SQL over the PostgreSQL wire protocol (TCP 5432). The items below document representative SQL statements, not HTTP requests."
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Full-Text Search (pg_search)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enable the pg_search extension",
+            "type": "doc"
+          },
+          "docs": "SQL over the Postgres wire protocol:\n\nCREATE EXTENSION pg_search;"
+        },
+        {
+          "info": {
+            "name": "Create a BM25 index",
+            "type": "doc"
+          },
+          "docs": "CREATE INDEX search_idx ON mock_items USING bm25 (id, description) WITH (key_field='id');"
+        },
+        {
+          "info": {
+            "name": "Run a BM25 search with the @@@ operator",
+            "type": "doc"
+          },
+          "docs": "SELECT id, description, paradedb.score(id) FROM mock_items WHERE description @@@ 'keyboard' ORDER BY paradedb.score(id) DESC;"
+        },
+        {
+          "info": {
+            "name": "Highlight matches with paradedb.snippet",
+            "type": "doc"
+          },
+          "docs": "SELECT id, paradedb.snippet(description) FROM mock_items WHERE description @@@ 'keyboard';"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Analytics (pg_analytics)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run a standard SQL aggregate",
+            "type": "doc"
+          },
+          "docs": "Columnar/OLAP analytics use standard SQL aggregates over the Postgres wire protocol:\n\nSELECT category, COUNT(*), AVG(rating) FROM mock_items GROUP BY category;"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
