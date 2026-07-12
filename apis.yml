@@ -86,6 +86,12 @@ apis:
     features as SQL functions, operators, and index access methods. ParadeDB exposes
     no HTTP/REST or WebSocket API.
 common:
+- type: VulnerabilityDisclosure
+  url: security/paradedb-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/paradedb-domain-security.yml
+- url: https://paradedb.com/blog
+  type: Blog
 - type: GitHubOrganization
   url: https://github.com/paradedb
 - type: LinkedIn
