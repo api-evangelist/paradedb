@@ -1,0 +1,14 @@
+{
+  "provider": "paradedb",
+  "sources": [
+    "paradedb-openapi.yml"
+  ],
+  "outputs": [],
+  "archived": [
+    "archived paradedb-openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
