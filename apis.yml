@@ -48,7 +48,7 @@ apis:
     type: APIReference
   - url: https://github.com/paradedb/paradedb
     type: GitHub
-  - url: openapi/paradedb-openapi.yml
+  - url: openapi/_original/paradedb-openapi.yml
     type: OpenAPI
   description: BM25 full-text search inside Postgres via the pg_search extension, built
     on Tantivy. Consumed as SQL over the PostgreSQL wire protocol - BM25 indexes are
@@ -69,7 +69,7 @@ apis:
     type: Documentation
   - url: https://github.com/paradedb/paradedb
     type: GitHub
-  - url: openapi/paradedb-openapi.yml
+  - url: openapi/_original/paradedb-openapi.yml
     type: OpenAPI
   description: Columnar storage, fast aggregates, and OLAP-style analytics over Postgres
     data, powered by Apache DataFusion and Postgres parallel workers. Accessed entirely
@@ -90,7 +90,7 @@ apis:
     type: Documentation
   - url: https://github.com/paradedb/paradedb
     type: GitHub
-  - url: openapi/paradedb-openapi.yml
+  - url: openapi/_original/paradedb-openapi.yml
     type: OpenAPI
   description: The primary integration surface for ParadeDB - the PostgreSQL wire protocol
     itself. Any standard Postgres client, driver, or ORM (psql, libpq, Drizzle, Django,
