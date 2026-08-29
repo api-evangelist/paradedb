@@ -7,6 +7,17 @@ description: ParadeDB is an open-source Postgres extension stack (pg_search for 
   real-time search and analytics engine, positioned as an Elasticsearch alternative.
   Its interface is SQL over the PostgreSQL wire protocol - custom operators (@@@) and
   paradedb.* functions - not a REST API.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
