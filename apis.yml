@@ -92,7 +92,7 @@ apis:
   - PostgreSQL
   - SQL
   - Wire Protocol
-  - Interfaces
+  - Interface
   tags_raw:
   - PostgreSQL
   - SQL
