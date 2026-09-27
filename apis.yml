@@ -8,15 +8,21 @@ description: ParadeDB is an open-source Postgres extension stack (pg_search for 
   Its interface is SQL over the PostgreSQL wire protocol - custom operators (@@@) and
   paradedb.* functions - not a REST API.
 deliveryModel:
-  model: saas
-  open_source: false
+  model: open-core
+  license: AGPL-3.0
+  license_evidence:
+    repo: paradedb/paradedb
+    spdx: AGPL-3.0
+    stars: 9306
+  open_source: true
   commercial: true
   callable_host: false
-  label: Hosted service · you call their endpoint
+  label: Open core · an OSS project plus a commercial hosted product
   confidence: medium
   source:
   - pricing
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
