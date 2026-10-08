@@ -128,3 +128,47 @@ plans:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  - subscription
+  units:
+  - compute
+  - negotiated
+  - object
+  plans:
+  - name: Community (Self-Managed)
+    access: free
+    model: free
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Enterprise (Self-Managed)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
+  - name: Fully Managed Cloud
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - month
+  - name: Bring-Your-Own-Cloud (BYOC)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
