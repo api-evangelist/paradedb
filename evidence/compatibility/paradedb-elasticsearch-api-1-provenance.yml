@@ -1,0 +1,12 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://raw.githubusercontent.com/paradedb/paradedb/main/README.md
+page: https://raw.githubusercontent.com/paradedb/paradedb/main/README.md
+file: paradedb-elasticsearch-api-1.md
+bytes: 6563
+sha256: c4fa92666bae954280ad92e45f3de6aff0c5dfb3d21422b49a6f1c8b68a1275b
+anchor: elastic
+shape: elasticsearch-api
+classification: no-compatibility-statement
+quote: null
+note: text extracted from the provider's own page (tags stripped), saved for evidence
