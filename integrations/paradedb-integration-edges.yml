@@ -1,0 +1,20 @@
+edges:
+- partner_name: PostgreSQL
+  partner: postgresql
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: postgres-wire
+  type: docs
+  degree: full
+  evidence: https://raw.githubusercontent.com/paradedb/paradedb/main/README.md
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/paradedb/blob/main/evidence/compatibility/paradedb-postgres-wire-1.md
+  quote: '[ParadeDB](https://paradedb.com) upgrades Postgres with a custom index for fast full-text and vector search,
+    BM25 scoring, filters, facets, aggregations, and joins. Built as a Postgres extension, it keeps your application
+    data and search en'
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
