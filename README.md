@@ -1,4 +1,4 @@
-# ParadeDB (paradedb)
+# ParadeDB
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,102 +66,111 @@
 
 ParadeDB is an open-source Postgres extension stack (pg_search for BM25 full-text search and pg_analytics for columnar OLAP) that turns PostgreSQL into a real-time search and analytics engine, positioned as an Elasticsearch alternative. Its interface is SQL over the PostgreSQL wire protocol - custom operators (@@@) and paradedb.* functions - not a REST API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/paradedb/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/paradedb/refs/heads/main/apis.yml)
+**Areas:** Search · Full-Text Search · Analytics · PostgreSQL · Database · Elasticsearch Alternative
 
-## Tags
+## ParadeDB on APIs.io
 
-- Search
-- Full-Text Search
-- Analytics
-- PostgreSQL
-- Database
-- Elasticsearch Alternative
+Everything profiled for ParadeDB is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/paradedb/](https://apis.io/providers/paradedb/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-06-20
-- **Modified:** 2026-06-20
+- [ParadeDB pg_search (Full-Text Search)](https://apis.io/apis/paradedb/pg_search/) — BM25 full-text search inside Postgres via the pg_search extension, built on Tantivy. Consumed as SQL over the PostgreSQL wire protocol - BM25 indexes are…
+- [ParadeDB Analytics (pg_analytics)](https://apis.io/apis/paradedb/analytics/) — Columnar storage, fast aggregates, and OLAP-style analytics over Postgres data, powered by Apache DataFusion and Postgres parallel workers. Accessed…
+- [ParadeDB Postgres SQL Interface](https://apis.io/apis/paradedb/postgres-sql-interface/) — The primary integration surface for ParadeDB - the PostgreSQL wire protocol itself. Any standard Postgres client, driver, or ORM (psql, libpq, Drizzle,…
 
-## APIs
+### Published properties
 
-### ParadeDB pg_search (Full-Text Search)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-BM25 full-text search inside Postgres via the pg_search extension, built on Tantivy. Consumed as SQL over the PostgreSQL wire protocol - BM25 indexes are created with CREATE INDEX ... USING bm25, queried with the @@@ operator, and scored or highlighted with paradedb.score() and paradedb.snippet(). No REST API.
+#### Collections (1)
 
-- **Human URL:** [https://docs.paradedb.com/documentation/full-text/overview](https://docs.paradedb.com/documentation/full-text/overview)
-- **Base URL:** `postgresql://`
+Postman and Open Collection request collections.
 
-#### Tags
+- [ParadeDB SQL Interface (No REST API)](https://apis.io/collections/paradedb/open-paradedb/)
 
-- Full-Text Search
-- BM25
-- Search
-- SQL
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://docs.paradedb.com/documentation/full-text/overview)
-- [API Reference](https://docs.paradedb.com/documentation/getting-started/quickstart)
-- [GitHub](https://github.com/paradedb/paradedb)
-- [OpenAPI](openapi/paradedb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/paradedb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/paradedb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Paradedb Domain Security](https://apis.io/security/paradedb/paradedb-domain-security/)
+- [Paradedb Vulnerability Disclosure](https://apis.io/security/paradedb/paradedb-vulnerability-disclosure/)
 
-### ParadeDB Analytics (pg_analytics)
+#### Plans and pricing (1)
 
-Columnar storage, fast aggregates, and OLAP-style analytics over Postgres data, powered by Apache DataFusion and Postgres parallel workers. Accessed entirely through standard SQL aggregate queries over the PostgreSQL wire protocol - there is no REST interface.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://docs.paradedb.com/documentation/aggregates/overview](https://docs.paradedb.com/documentation/aggregates/overview)
-- **Base URL:** `postgresql://`
+- [Paradedb Plans Pricing](https://apis.io/plans/paradedb/paradedb-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- Analytics
-- OLAP
-- Columnar
-- SQL
+Published request limits.
 
-#### Properties
+- [Paradedb Rate Limits](https://apis.io/rate-limits/paradedb/paradedb-rate-limits/)
 
-- [Documentation](https://docs.paradedb.com/documentation/aggregates/overview)
-- [GitHub](https://github.com/paradedb/paradedb)
-- [OpenAPI](openapi/paradedb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/paradedb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/paradedb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### FinOps (1)
 
-### ParadeDB Postgres SQL Interface
+What the API costs to run, by operation.
 
-The primary integration surface for ParadeDB - the PostgreSQL wire protocol itself. Any standard Postgres client, driver, or ORM (psql, libpq, Drizzle, Django, SQLAlchemy, Rails, EF Core) connects over the wire protocol and invokes ParadeDB features as SQL functions, operators, and index access methods. ParadeDB exposes no HTTP/REST or WebSocket API.
+- [Paradedb Finops](https://apis.io/finops/paradedb/paradedb-finops/)
 
-- **Human URL:** [https://docs.paradedb.com/welcome/introduction](https://docs.paradedb.com/welcome/introduction)
-- **Base URL:** `postgresql://`
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- PostgreSQL
-- SQL
-- Wire Protocol
-- Interface
-
-#### Properties
-
-- [Documentation](https://docs.paradedb.com/welcome/introduction)
-- [GitHub](https://github.com/paradedb/paradedb)
-- [OpenAPI](openapi/paradedb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/paradedb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/paradedb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/paradedb)
-- [LinkedIn](https://www.linkedin.com/company/paradedb)
 - [Website](https://www.paradedb.com)
 - [Documentation](https://docs.paradedb.com)
-- [Plans](plans/paradedb-plans-pricing.yml)
-- [Rate Limits](rate-limits/paradedb-rate-limits.yml)
-- [Fin Ops](finops/paradedb-finops.yml)
+- [Blog](https://paradedb.com/blog)
+- [GitHub](https://github.com/paradedb)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 18.7** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 23.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 13.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/paradedb/](https://apis.io/providers/paradedb/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ParadeDB: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/paradedb/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
